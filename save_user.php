@@ -4,12 +4,16 @@
 	if(ISSET($_POST['save'])){
 		$id= $_POST['id'];
 		$username = $_POST['username'];
-		$Password = $_POST['Password'];
+		$Password=$_POST["Password"];
+		$passwordHash = base64_encode($Password);
 		$email = $_POST['email'];
+		$role = $_POST['role'];
+		
+	
 	
 		  
-		 $sql = "INSERT INTO user (username, Password, email)
-		 VALUES ('$username', '$Password', '$email')";
+		 $sql = "INSERT INTO user (username, Password, email,role)
+		 VALUES ('$username', '$passwordHash', '$email','$role')";
 	
 		if (mysqli_query($conn, $sql)) {
 		

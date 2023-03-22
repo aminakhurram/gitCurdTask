@@ -19,7 +19,21 @@
 						</div>
 						<div class="form-group">
 							<label>Password</label>
-							<input type="text" name="Password" value="<?php echo $fetch['Password']?>" class="form-control" required="required"/>
+							<input type="text" name="Password" value=" <?php  $Password=$fetch['Password'];
+							 echo base64_decode($Password);?>  " class="form-control" required="required"/>
+						</div>
+						<div class="form-group">
+							
+							<label for="role">Choose role:</label>
+
+                           <select name="role" id="role">
+                           <option value="user" <?php if($role=='user'){ echo "selected";}?> >user</option>
+                    
+						   <option value="admin" <?php if($role=='admin'){ echo "selected";}?> >admin</option>
+                         
+						   <option value="employee" <?php if($role=='employee'){ echo "selected";}?> >employee</option>
+                          </select> 
+
 						</div>
 					</div>
 				</div>

@@ -33,10 +33,72 @@
         </script>
         
 
+        <?php
+
+$host="localhost";
+$user="root";
+$password="";
+$db="curd2";
+
+session_start();
+
+$data=mysqli_connect($host,$user,$password,$db);
+
+include_once("db.php");
+
+if($data===false)
+{
+  die("connection error");
+}
+
+if($_SERVER["REQUEST_METHOD"]=="POST")
+{
+  $username=$_POST["username"];
+  $Password=$_POST["Password"];
+  $passwordHash = base64_encode($Password);
+  //echo  $passwordHash;
+
+  $sql="select * from user where username='".$username."' AND Password='".$passwordHash."' ";
+
+  $result=mysqli_query($data,$sql);
+
+  $row=mysqli_fetch_array($result);
+
+  if($row["role"]=="user")
+  { 
+
+    $_SESSION["id"]=$row['id'];
+
+    header("location:userhome.php");
+  }
+
+  elseif($row["role"]=="admin")
+  {
+
+    $_SESSION["id"]=$row['id'];
+    
+    header("location:CURDsearch.php");
+  }
+
+  elseif($row["role"]=="employee")
+  {
+
+    $_SESSION["id"]=$row['id'];
+    
+    header("location:employeehome.php");
+  }
+  else
+  {
+    echo "username or password incorrect";
+  }
+
+}
+
+?>
 
    <div class="formBorder" >
     <h1> LogIn</h1>
-    <form   action="login.php" method="post">
+    <form    action="#" method="post">
     <?php if (isset($_GET['error'])) { ?>
 
     <p class="error"><?php echo $_GET['error']; ?></p>
@@ -44,9 +106,9 @@
     <?php } ?>
 
        <div class="input">  <label>User Name</label>
-     <input name="username" type="username" placeholder="">
+     <input name="username" type="username" placeholder="" required>
      <label> Password</label>
-     <input name="Password" type="Password" placeholder="">
+     <input name="Password" type="Password" placeholder="" required>
      <input type="submit" value="Submit">
     </div>
     </form>
@@ -63,4 +125,5 @@
     </div>
     
 </html>
+
 

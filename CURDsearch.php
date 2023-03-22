@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,9 +49,9 @@
         }
         </script>
         
-
+        <?php echo $_SESSION["username"] ?>
       
-        <h1 class="text-white" > CURD TABLE </h1>
+        <h1 class="text-white" > ADMIN CURD TABLE </h1>
 
 
 
@@ -73,6 +72,7 @@
         <th>Name</th>
         <th>Email</th>
         <th>Password</th>
+        <th>Role</th>
          <th></th>
         <th></th>
       </tr>
@@ -86,12 +86,29 @@
 					$query = mysqli_query($conn, "SELECT * FROM `user`") or die(mysqli_error());
 					while($fetch = mysqli_fetch_array($query))
 					{
+            
 				?>
 				<tr>
                   <td><?php echo $fetch['id']?></td>
 					<td><?php echo $fetch['username']?></td>
 					<td><?php echo $fetch['email']?></td>
-					<td><?php echo $fetch['Password']?></td>
+					<td><?php 
+          
+ //$a= "Hellow";
+ //echo $a;
+ //$b= base64_encode($a);
+ //echo $b;
+ //$c=base64_decode($b);
+ //echo $c;
+
+
+
+          $Password=$fetch['Password'];
+         echo base64_decode($Password);?></td>
+         
+
+          <td><?php echo $fetch['role']?></td>
+          
 					
                  
 <td><a class="delete_employee" data-emp-id="<?php echo $fetch["id"]; ?>" href="javascript:void(0)">
@@ -131,6 +148,17 @@
 							<div class="form-group">
 								<label>email</label>
 								<input type="text" name="email" class="form-control" required="required"/>
+							</div>
+              <div class="form-group">
+								<label>role</label>
+								
+                <select name="role" id="role">
+                <option value="user" <?php if($role=='user'){ echo "selected";}?> >user</option>
+                    
+						   <option value="admin" <?php if($role=='admin'){ echo "selected";}?> >admin</option>
+                         
+						   <option value="employee" <?php if($role=='employee'){ echo "selected";}?> >employee</option>
+                          </select> 
 							</div>
 						</div>
 					</div>
