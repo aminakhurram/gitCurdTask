@@ -1,7 +1,7 @@
 <?php
+
 session_start();
 include_once("includes/db.php");
-
 ?>
 
 <!DOCTYPE html>
@@ -11,14 +11,17 @@ include_once("includes/db.php");
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-    <link rel="stylesheet" href="Css.css"/>
+    <link rel="stylesheet" href="css/Css.css"/>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+
     <title>LogIn-Form</title>
 </head>
 <body>
 
 <div class="topnav" id="myTopnav">
-        <a href="#Logout">Logout</a>
+        <a href="logout.php">logout</a>
         <a href="#contact">Contact</a>
         <a href="#about">About</a>
         <a href="#home" class="active">Home</a>
@@ -40,9 +43,6 @@ include_once("includes/db.php");
         
 
         <?php
-
-
-
 
 
 
@@ -101,7 +101,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 
     <?php } ?>
 
-       <div class="input">  <label>User Name</label>
+       <div class="input">  <label >User Name</label>
      <input name="username" type="username" placeholder="" required>
      <label> Password</label>
      <input name="Password" type="Password" placeholder="" required>
