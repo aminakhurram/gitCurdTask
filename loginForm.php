@@ -14,14 +14,14 @@ include_once("includes/db.php");
     <link rel="stylesheet" href="css/Css.css"/>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
+
 
     <title>LogIn-Form</title>
 </head>
 <body>
 
 <div class="topnav" id="myTopnav">
-        <a href="logout.php">logout</a>
+        <a href="logout.php">Logout</a>
         <a href="#contact">Contact</a>
         <a href="#about">About</a>
         <a href="#home" class="active">Home</a>
@@ -112,6 +112,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
     <h3> Already have an account <a href="SignupPage.php">SignIn</h3>
 
 </form>
+
+
 </div>   
     
     

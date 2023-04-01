@@ -21,7 +21,7 @@ include_once("includes/db.php");
 <body>
  
 <div class="topnav" id="myTopnav">
-        <a href="logout.php">logout</a>
+        <a href="logout.php">Logout</a>
         <a href="#contact">Contact</a>
         <a href="#about">About</a>
         <a href="#home" class="active">Home</a>

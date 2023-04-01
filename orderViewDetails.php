@@ -48,7 +48,7 @@ $conn->close();
 <body>
 
 <div class="topnav" id="myTopnav">
-        <a href="logout.php">logout</a>
+        <a href="logout.php">Logout</a>
         <a href="#contact">Contact</a>
         <a href="#about">About</a>
         <a href="orderViewProducts.php" class="active">Oredr Detail</a>

@@ -35,7 +35,7 @@ if(!isset($id))
   
        <div class="topnav" id="myTopnav">
        <ul> 
-        <a href="logout.php">logout</a>
+        <a href="logout.php">Logout</a>
         <a href="#contact">Contact</a>
         <a href="#about">About</a>
         <a href="CURDItemadmin.php">Products</a>

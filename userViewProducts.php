@@ -69,7 +69,7 @@ class="topnav" id="myTopnav">
 
      <a href="cart.php" class="cart">cart <span><?php echo $row_count; ?></span> </a>
        
-        <a href="logout.php">logout</a>
+        <a href="logout.php">Logout</a>
         <a href="#contact">Contact</a>
         <a href="#about">About</a>
         <a href="orderViewProducts.php" class="active">Oredr Detail</a>

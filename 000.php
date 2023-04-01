@@ -12,7 +12,7 @@
     
 
 <div class="topnav" id="myTopnav">
-        <a href="#Logout">logout</a>
+        <a href="#Logout">Logout</a>
         <a href="#contact">Contact</a>
         <a href="#about">About</a>
         <a href="#home" class="active">Home</a>
