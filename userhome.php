@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+require 'includes/db.php';
 $id=$_SESSION['id'];
 if(!isset($id))
 {
@@ -25,7 +25,7 @@ if(!isset($id))
 <script type="text/javascript" src="script/bootbox.min.js"></script>
 <script type="text/javascript" src="script/deleteRecords.js"></script>
 
-    <title>CURD</title>
+    <title>User Page</title>
 </head>
 
 <body>
@@ -33,9 +33,11 @@ if(!isset($id))
   
        <div class="topnav" id="myTopnav">
        <ul> 
-        <a href="logout.php">logout</a>
+        <a href="logout.php">Logout</a>
         <a href="#contact">Contact</a>
         <a href="#about">About</a>
+        <a href="orderViewProducts.php" class="active">Oredr Detail</a>
+        <a href="userViewProducts.php">Products</a>
         <a href="#home" class="active">Home</a>
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">
           <i class="fa fa-bars"></i>
@@ -83,7 +85,7 @@ if(!isset($id))
 
     <!-- populate table from mysql database -->
     <?php
-                    require 'db.php';
+                  
                     $query = mysqli_query($conn, "SELECT * FROM `user` where id ='$id'") or die(mysqli_error());
                     while($fetch = mysqli_fetch_array($query))
                     {

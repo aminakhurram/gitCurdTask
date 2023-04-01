@@ -1,15 +1,15 @@
-<?php
 
+<?php
+require 'includes/db.php';
 session_start();
 
 $id=$_SESSION['id'];
+$username=$_SESSION['username'];
 if(!isset($id))
 {
     header("location:loginForm.php");
 }
-	require 'includes/db.php';
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,7 +27,7 @@ if(!isset($id))
 <script type="text/javascript" src="script/bootbox.min.js"></script>
 <script type="text/javascript" src="script/deleteRecords.js"></script>
 
-    <title>CURD</title>
+    <title>Order</title>
 </head>
 
 <body>
@@ -35,10 +35,11 @@ if(!isset($id))
   
        <div class="topnav" id="myTopnav">
        <ul> 
-        <a href="logout.php">logout</a>
+        <a href="logout.php">Logout</a>
         <a href="#contact">Contact</a>
         <a href="#about">About</a>
-        <a href="CURDItemadmin.php">Products</a>
+        <a href="orderViewProducts.php" class="active">Oredr Detail</a>
+        <a href="userViewProducts.php">Products</a>
         <a href="userhome.php" class="active">Home</a>
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">
           <i class="fa fa-bars"></i>
@@ -62,7 +63,7 @@ if(!isset($id))
         
         <?php echo $_SESSION["username"] ?>
       
-        <h1 class="text-white" > ADMIN CURD TABLE </h1>
+        <h1 class="text-white" > ORDER LIST </h1>
 
 
 
@@ -70,8 +71,8 @@ if(!isset($id))
             
   
         <hr style="border-top:1px dotted #ccc;"/>
-		<button type="button" class="btn btn-success" data-toggle="modal" data-target="#form_modal"><span class="glyphicon glyphicon-plus"></span> Add user</button>
-		<br /><br />
+	
+    <br /><br />
 
 
 
@@ -79,12 +80,13 @@ if(!isset($id))
     <thead class="text-white bg-dark">  
      
       <tr>
-        <th>ID</th>
+        <th>Order Id</th>
+        <th>Account Name</th>
         <th>Name</th>
         <th>Email</th>
-        <th>Password</th>
-        <th>Role</th>
-         <th></th>
+        <th>Order</th>
+        <th>Date/Time</th>
+     
         <th></th>
       </tr>
     </thead>
@@ -93,46 +95,47 @@ if(!isset($id))
 
     <!-- populate table from mysql database -->
     <?php
-				
-					$query = mysqli_query($conn, "SELECT * FROM `user`") or die(mysqli_error());
+					
+					
+          $query = mysqli_query($conn, "SELECT * FROM `order`  where id ='$id'") or die(mysqli_error());
 					while($fetch = mysqli_fetch_array($query))
 					{
-            
-				?>
+            $query1 = mysqli_query($conn, "SELECT * FROM `user`where id ='$id'") or die(mysqli_error());
+            while($fetch1 = mysqli_fetch_array($query1))
+            {
+              
+          ?>
+			
+
+        
 				<tr>
-                  <td><?php echo $fetch['id']?></td>
-					<td><?php echo $fetch['username']?></td>
-					<td><?php echo $fetch['email']?></td>
-					<td><?php 
-          
- //$a= "Hellow";
- //echo $a;
- //$b= base64_encode($a);
- //echo $b;
- //$c=base64_decode($b);
- //echo $c;
 
-
-
-          $Password=$fetch['Password'];
-         echo base64_decode($Password);?></td>
          
 
-          <td><?php echo $fetch['role']?></td>
+          <td><?php echo $fetch['oid']?></td>
+          <td><?php echo $fetch1['username']?></td> 
+					<td><?php echo $fetch['name']?></td>
+					<td><?php echo $fetch['email']?></td>
+          <td><?php echo $fetch['total_products']?></td>
+          <td><?php echo $fetch['ctime']?></td>
           
 					
                  
-<td><a class="delete_employee" data-emp-id="<?php echo $fetch["id"]; ?>" href="javascript:void(0)">
-<i class="glyphicon glyphicon-trash"></i>
-</a></td>
-<td><button class="btn btn-warning" data-toggle="modal" type="button" data-target="#update_modal<?php echo $fetch['id']?>"><span class="glyphicon glyphicon-edit"></span> Edit</button></td>
-                </tr>
+          <td>
+       
+       <a href="orderViewDetails.php?orderId=<?php echo $fetch['oid']; ?>" data-toggle="modal" class="btn btn-warning"><span class="glyphicon glyphicon-edit"></span> Feedback </a>
+    </td>	
+             </tr>
 				<?php
 					
-					include 'update_user.php';
+            }
 					
 					}
 				?>
+
+
+
+
 
  </tbody>
   </table>

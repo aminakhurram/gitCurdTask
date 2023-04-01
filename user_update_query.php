@@ -1,5 +1,5 @@
 <?php
-	require_once 'db.php';
+	require_once 'includes/db.php';
 	
 	if(ISSET($_POST['update'])){
 		$id = $_POST['id'];

@@ -1,3 +1,9 @@
+<?php
+session_start();
+include_once("includes/db.php");
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +18,7 @@
 <body>
 
 <div class="topnav" id="myTopnav">
-        <a href="#Logout">logout</a>
+        <a href="#Logout">Logout</a>
         <a href="#contact">Contact</a>
         <a href="#about">About</a>
         <a href="#home" class="active">Home</a>
@@ -35,21 +41,11 @@
 
         <?php
 
-$host="localhost";
-$user="root";
-$password="";
-$db="curd2";
 
-session_start();
 
-$data=mysqli_connect($host,$user,$password,$db);
 
-include_once("db.php");
 
-if($data===false)
-{
-  die("connection error");
-}
+
 
 if($_SERVER["REQUEST_METHOD"]=="POST")
 {
@@ -60,7 +56,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 
   $sql="select * from user where username='".$username."' AND Password='".$passwordHash."' ";
 
-  $result=mysqli_query($data,$sql);
+  $result=mysqli_query($conn,$sql);
 
   $row=mysqli_fetch_array($result);
 

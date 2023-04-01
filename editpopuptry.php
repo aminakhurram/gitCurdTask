@@ -1,4 +1,13 @@
+<?php
+require 'includes/db.php';
+session_start();
 
+$id=$_SESSION['id'];
+if(!isset($id))
+{
+    header("location:loginForm.php");
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">

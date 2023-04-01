@@ -1,5 +1,9 @@
 
+<?php
+session_start();
+include_once("includes/db.php");
 
+?>
 
 
 <!DOCTYPE html>
@@ -16,7 +20,7 @@
 <body>
  
 <div class="topnav" id="myTopnav">
-        <a href="#Logout">logout</a>
+        <a href="#Logout">Logout</a>
         <a href="#contact">Contact</a>
         <a href="#about">About</a>
         <a href="#home" class="active">Home</a>
@@ -65,7 +69,7 @@ if (isset($_POST["submit"])) {
    if ($Password!==$passwordRepeat) {
     array_push($errors,"Password does not match");
    }
-   require_once "db.php";
+   
    $sql = "SELECT * FROM user WHERE email = '$email'";
    $result = mysqli_query($conn, $sql);
    $rowCount = mysqli_num_rows($result);

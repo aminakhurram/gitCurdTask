@@ -37,6 +37,7 @@ if(!isset($id))
         <a href="logout.php">logout</a>
         <a href="#contact">Contact</a>
         <a href="#about">About</a>
+        <a href="userViewProducts.php">Products</a>
         <a href="#home" class="active">Home</a>
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">
           <i class="fa fa-bars"></i>
