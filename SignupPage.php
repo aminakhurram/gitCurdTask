@@ -20,17 +20,8 @@ include_once("includes/db.php");
 
 <body>
  
-<div class="topnav" id="myTopnav">
-        <a href="logout.php">Logout</a>
-        <a href="#contact">Contact</a>
-        <a href="#about">About</a>
-        <a href="#home" class="active">Home</a>
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-          <i class="fa fa-bars"></i>
-        </a>
-      </div>
-      
-      
+
+<?php  require_once "includes/navbar.php"; ?>
 
    
 

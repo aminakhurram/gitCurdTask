@@ -30,20 +30,7 @@ if(!isset($id))
 
 <body>
  
-  
-       <div class="topnav" id="myTopnav">
-       <ul> 
-       <a href="logout.php">Logout</a>
-        <a href="#contact">Contact</a>
-        <a href="#about">About</a>
-        <a href="orderViewProducts.php" class="active">Oredr Detail</a>
-        <a href="userViewProducts.php">Products</a>
-        <a href="userhome.php" class="active">Home</a>
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-          <i class="fa fa-bars"></i>
-        </a>
-</ul>
-      </div>
+<?php  require_once "includes/navbar1.php"; ?>
       
 
    
